@@ -6,16 +6,20 @@
  for celc= -17,-16, ...,148
 */
 
+#define LOWER 0 // lower limit of table
+#define UPPER 300 // upper limit
+#define STEP 20 // step size
+
 int main()
 {
-  float fahr, celcius;
-  int lower, upper, step;
+  int fahr, celcius; 
+  //int lower, upper, step;
 
-  lower = 0; // lower limit of temperature table
-  upper = 300; // upper limir
-  step = 20; // step size
+  //lower = 0; // lower limit of temperature table
+  //upper = 300; // upper limir
+  //step = 20; // step size
 
-  fahr = lower;
+  //fahr = lower;
   
 
   printf("===========================\n");
@@ -25,11 +29,11 @@ int main()
   printf("===========================\n");
   printf("|| Fahrenheit || Celcius ||\n");
   printf("===========================\n");
-  while (fahr <= upper) {
-    celcius = (5.0/9.0) * (fahr-32.0);
-    printf("|| %3.0f      ||  %6.1f   ||\n", fahr,celcius);
-    fahr = fahr + step;
+
+  for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP) {
+    printf("|| %3d    ||     %6.1f  ||\n", fahr, (5.0/9.0)*(fahr-32));
   }
+
   printf("===========================\n");
 
   
@@ -40,12 +44,11 @@ int main()
   printf("===========================\n");
   printf("|| Celcius || Fahrenheit ||\n");
   printf("===========================\n");
-  celcius = lower;
-  while (celcius <= upper) {
-    fahr = (celcius * 9/5) + 32;
-    printf("|| %3.0f      ||  %6.1f   ||\n", celcius,fahr);
-    celcius = celcius + step;
+
+  for (celcius = LOWER; celcius <= UPPER; celcius = celcius + STEP){
+    printf("|| %3d    ||     %6.1f  ||\n", celcius, (celcius * 9.0/5.0) + 32);
   }
+
   printf("===========================\n");
   return 0;
 }
